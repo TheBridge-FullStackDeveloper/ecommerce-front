@@ -1,11 +1,11 @@
 import Navbar from "./components/navbar/Navbar";
-import ProductCard from "./components/productCard/ProductCard";
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
     <div className="App">
-    {/*<Navbar/>*/}
-     <ProductCard/>
+    <Navbar/>
+    <HomePage/>
     </div>
   );
 }
