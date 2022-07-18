@@ -26,7 +26,7 @@ export default function ImgMediaCard() {
           {accounting.formatMoney(1300,{symbol:'€'})}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-        El MacBook Pro de 13 pulgadas incluye el nuevo chip M2, que lo convierte en un titán. Ofrece hasta 20 horas de autonomía1 y un sistema de refrigeración activa para mantener un ritmazo incluso en tareas muy complejas. Y qué decir de la cámara FaceTime HD, la pantalla Retina y los micros con calidad de estudio. Además, su diseño compacto es ideal para trabajar donde sea. Tira millas.
+        El MacBook Pro de 13 pulgadas incluye el nuevo chip M2, que lo convierte en un titán. Ofrece hasta 20 horas de autonomía1 y un sistema de refrigeración activa para mantener un ritmazo incluso en tareas muy complejas. 
         </Typography>
       </CardContent>
       <CardActions sx={{display:"flex", justifyContent:"space-between", mr:2}}>
