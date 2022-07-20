@@ -6,12 +6,20 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import accounting from 'accounting';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
+
+function truncateString(str, num = 200 ) {
+  if (str.length > num) {
+    return str.slice(0, num) + " ... ";
+  } else {
+    return str;
+  }
+}
 
 export default function ImgMediaCard({product: {id, name, rating, stock, image, category, price, details }}) {
   return (
-    <Card sx={{ maxWidth: 340 }}>
+    <Card  sx={{ maxWidth: 340}}>
       <CardMedia
         component="img"
         alt={name}
@@ -27,7 +35,7 @@ export default function ImgMediaCard({product: {id, name, rating, stock, image, 
           {accounting.formatMoney(price,{symbol:'€'})}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {details}
+          {truncateString(details)}
         </Typography>
       </CardContent>
       <CardActions sx={{display:"flex", justifyContent:"space-between", mr:2}}>
