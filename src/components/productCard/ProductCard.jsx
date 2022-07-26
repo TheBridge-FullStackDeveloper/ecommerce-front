@@ -6,33 +6,39 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import accounting from 'accounting';
-import { Box } from '@mui/material';
-
-
-export default function ImgMediaCard() {
+import { Box,  } from '@mui/material';
+function truncateString(str, num = 200 ) {
+  if (str.length > num) {
+    return str.slice(0, num) + " ... ";
+  } else {
+    return str;
+  }
+}
+export default function ImgMediaCard({product: {id, name, rating, stock, image, category, price, details }}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card  sx={{ maxWidth: 340}}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={name}
         height="192"
-        image="https://cdn.ipadizate.com/2021/11/nuevo-MacBook-pro.jpg"
+        image={image}
+        sx={{maxWidth: '100%', maxHeight: '100%'}}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" sx={{fontWeight:'bold'}}>
-          Mackbook
+          {name}
         </Typography>
         <Typography className="price" gutterBottom variant="h5" component="div" >
-          {accounting.formatMoney(1300,{symbol:'€'})}
+          {accounting.formatMoney(price,{symbol:'€'})}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-        El MacBook Pro de 13 pulgadas incluye el nuevo chip M2, que lo convierte en un titán. Ofrece hasta 20 horas de autonomía1 y un sistema de refrigeración activa para mantener un ritmazo incluso en tareas muy complejas. 
+          {truncateString(details)}
         </Typography>
       </CardContent>
       <CardActions sx={{display:"flex", justifyContent:"space-between", mr:2}}>
         <Button size="large" variant="contained" color="secondary" sx={{fontWeight:"bold", backgroundColor:"#7749F8",mb:0, '&:hover':{backgroundColor:"#FFFFFF", color:"#7749F8", fontWeight:'bold'} }}>Add to Cart</Button>
         <Box sx={{display:"flex"}}>
-            {Array(5)
+            {Array(rating)
               .fill()
               .map((_, i)=>(
               <p>&#11088;</p>
@@ -42,3 +48,12 @@ export default function ImgMediaCard() {
     </Card>
   );
 }
+
+
+
+
+
+
+
+
+
