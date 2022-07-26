@@ -16,7 +16,7 @@ function truncateString(str, num = 200 ) {
 }
 export default function ImgMediaCard({product: {id, name, rating, stock, image, category, price, details }}) {
   return (
-    <Card  sx={{ maxWidth: 340}}>
+    <Card sx={{height:'100%'}}>
       <CardMedia
         component="img"
         alt={name}
