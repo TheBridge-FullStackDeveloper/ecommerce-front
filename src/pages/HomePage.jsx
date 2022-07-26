@@ -1,25 +1,21 @@
 import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
-import ProductCard from '../components/productCard/ProductCard'
 import products from '../product-data'
 import ImgMediaCard from "../components/productCard/ProductCard"
-
-/*function mostPopular(rating) {
-  if (rating > 4 ) {
-    return ()
-  } else {
-    return 
-  }
-}*/
-/* font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 32px;
-line-height: 39px;
-/* identical to box height 
-*/
-
 export default function HomePage() {
+  function menorPrice () {
+    const priceSort = products.sort((a,b)=>{
+      return a.price - b.price
+    })
+    return (
+      priceSort.slice(0,3).map(products => {
+        return(
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+        <ImgMediaCard  key={products.id} product={products} />
+      </Grid>
+        )
+  }))
+  }
   return (
     <Box>
       {/* Titular */}
@@ -30,39 +26,43 @@ export default function HomePage() {
         Welcome in e-commerce
       </Typography>
       {/* Most Popular */}
-      <Box sx={{display:'grid', justifyContent:'space-around'}}>
-        <Box sx={{ flexGrow: 1, marginTop: 5 }} >
-          <Typography variant='h4' sx={{ cursor: 'pointer', marginLeft: 5 }}>
-            Most Popular
-          </Typography>
-          <Grid container spacing={2} padding={3}>
-            {
-              products.map(products => products.rating > 4 ? (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
-                  <ImgMediaCard key={products.id} product={products} />
-                </Grid>
-              ) : null)
-            }
-
-          </Grid>
+      <Box >
+          <Box sx={{ flexGrow: 1, marginTop: 5, }} >
+            <Typography variant='h4' sx={{ cursor: 'pointer', marginLeft: 5 }}>
+              Most Popular
+            </Typography>
+            <Grid container spacing={2} padding={3} sx={{display:'flex', alignItems:'center', justifyContent:'center'}} >
+              {
+                products.map(products => products.rating > 4 ? (
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <ImgMediaCard key={products.id} product={products} />
+                  </Grid>
+                ) : null)
+              }
+            </Grid>
         </Box>
         {/* Discount */}
         <Box sx={{ flexGrow: 1, marginTop: 5 }} >
           <Typography variant='h4' sx={{ cursor: 'pointer', marginLeft: 5 }}>
             Discount
           </Typography>
-          <Grid container spacing={2} padding={3}>
+          <Grid container spacing={2} padding={3} sx={{display:'flex', alignItems:'center', justifyContent:'center'}} >
             {
-              products.map(products => products.price < 500 ? (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
-                  <ImgMediaCard key={products.id} product={products} />
-                </Grid>
-              ) : null)
+              menorPrice()
             }
-
           </Grid>
         </Box>
       </Box>
     </Box>
   );
 }
+
+
+
+
+
+
+
+
+
+
