@@ -1,9 +1,23 @@
-import "./authpage.scss"
+import "./authpage.scss";
+import { useEffect, useRef } from "react";
+import { userNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
+import { useLogin } from "hooks";
+import { useGetter } from "store";
+
 
 function AuthPage() {
+    const { user, setUser } = useGetter();
+    const navigate = userNavigate();
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const login = useLogin({onSuccess: () => navigate("http://www.google.com")});
+
+    const onSubmit = (data) => login(data);
+
+    useEffect(() =>{
+      setUser();
+    }, []);
+    
 
 
   return (

@@ -3,7 +3,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
-        <p>Ecommerce</p>
+        <p className="title">Ecommerce</p>
       </div>
       <div className="menu">
         <p>Home</p>

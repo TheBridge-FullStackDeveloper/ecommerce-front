@@ -1,6 +1,7 @@
 import Navbar from "./components/navbar/Navbar";
 //import ProductCard from "./components/productCard/ProductCard";
-import AuthPage from "./components/authPage/AuthPage";
+import AuthPage from "./pages/authPage/AuthPage";
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
