@@ -6,7 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import accounting from 'accounting';
-import { Box,  } from '@mui/material';
+import { Box} from '@mui/material';
+import { display } from '@mui/system';
 function truncateString(str, num = 200 ) {
   if (str.length > num) {
     return str.slice(0, num) + " ... ";
@@ -15,17 +16,25 @@ function truncateString(str, num = 200 ) {
   }
 }
 export default function ImgMediaCard({product: {id, name, rating, stock, image, category, price, details }}) {
+  const [isHover, setHover] = React.useState(false);
+  const elevation = isHover ? 24:0
   return (
-    <Card  sx={{ maxWidth: 340}}>
+    <Card elevation={elevation}
+      onMouseEnter = {() => setHover(true)}
+      onMouseLeave = {() => setHover(false)}
+      sx={{ maxWidth: 340 }}> 
       <CardMedia
-        component="img"
+        component="img" 
         alt={name}
         height="192"
         image={image}
-        sx={{maxWidth: '100%', maxHeight: '100%'}}
+        sx={{maxWidth:'100%', maxHeight:'100%'}}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight:'bold'}}>
+      <CardContent sx={{
+        minHeight:'200px'
+      }} 
+      >
+        <Typography alt={category} gutterBottom variant="h5" component="div" sx={{fontWeight:'bold'}}>
           {name}
         </Typography>
         <Typography className="price" gutterBottom variant="h5" component="div" >
@@ -48,6 +57,8 @@ export default function ImgMediaCard({product: {id, name, rating, stock, image, 
     </Card>
   );
 }
+
+
 
 
 
