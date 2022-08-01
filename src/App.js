@@ -1,11 +1,13 @@
 import Navbar from "./components/navbar/Navbar";
-import ProductCard from "./components/productCard/ProductCard";
+//import ProductCard from "./components/productCard/ProductCard";
+import AuthPage from "./components/authPage/AuthPage";
 
 function App() {
   return (
     <div className="App">
-    {/*<Navbar/>*/}
-     <ProductCard/>
+      <Navbar/>
+      <AuthPage />
+     {/*<ProductCard/>*/}
     </div>
   );
 }
