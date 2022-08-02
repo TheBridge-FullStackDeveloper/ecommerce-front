@@ -10,7 +10,7 @@ function AuthPage() {
     const { user, setUser } = useGetter();
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
-    const login = useLogin({onSuccess: () => navigate("http://www.google.com")});
+    const login = useLogin({onSuccess: () => navigate("/")});
 
     const onSubmit = (data) => login(data);
 

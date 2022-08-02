@@ -1,20 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import App from './App';
+import Context, { useGetter } from 'store';
+import { useUser } from 'hooks';
+import Login from "./pages/authPage/Login";
+import Register from "./pages/authPage/Register"
 
-const Container = () =>{
+
+const Guard = ({ component: Component }) => {
+  const { user } = useGetter();
+  return user ? Component : <Navigate to="/login" replace />;
+};
+
+const Container = () => {
+  const [user, setUser] = useUser();
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App/>}> 
-          <Route index element={<HomePage/>}/>
-          <Route path="product-page" element={<ProductPage/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Context.Provider value={{ user, setUser, }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Guard component={<App />} />}>
+            <Route index element={<HomePage />} />
+            <Route path="product-page" element={<ProductPage />} />
+          </Route>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+    </Context.Provider>
   )
 }
 
@@ -22,7 +37,7 @@ const Container = () =>{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Container/>
+    <Container />
   </React.StrictMode>
 );
 
