@@ -22,7 +22,7 @@ export default function ImgMediaCard({product: {id, name, rating, stock, image, 
     <Card elevation={elevation}
       onMouseEnter = {() => setHover(true)}
       onMouseLeave = {() => setHover(false)}
-      sx={{ maxWidth: 340 }}> 
+      sx={{ maxWidth: 340, margin: '0 auto' }}> 
       <CardMedia
         component="img" 
         alt={name}

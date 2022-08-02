@@ -50,13 +50,13 @@ export default function ProductPage() {
       </Box>
       <Box >
         <Box sx={{ flexGrow: 1, marginTop: 5, display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-          <Grid container spacing={2} padding={3} >
+          <Grid container spacing={2} padding={3} justifyContent='center' >
             {
               products
                 .filter((product) => product.name.toLowerCase().includes(filterProduct.toLowerCase()) )
                 .filter((product) => product.category.includes(category))
                 .map(products => (
-                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                  <Grid item xs={12} sm={6} md={4} lg={4} sx={{justifyContent:'center'}}>
                     <ImgMediaCard key={products.id} product={products} />
                   </Grid>
                 ))
