@@ -1,3 +1,4 @@
+import AuthPage from "./components/auth-page/AuthPage";
 import Navbar from "./components/navbar/Navbar";
 import {Outlet} from "react-router-dom"
 import HomePage from "./pages/HomePage"
@@ -11,5 +12,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
