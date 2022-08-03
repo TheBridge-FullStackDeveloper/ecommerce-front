@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import App from './App';
 import Context, { useGetter } from 'store';
-import { useUser } from 'hooks';
+import { useUser, useProduct } from 'hooks';
 import Login from "./pages/authPage/Login";
 import Register from "./pages/authPage/Register"
 
@@ -17,14 +17,15 @@ const Guard = ({ component: Component }) => {
 
 const Container = () => {
   const [user, setUser] = useUser();
+  const [products, setProducts] = useProduct();
   return (
-    <Context.Provider value={{ user, setUser, }}>
+    <Context.Provider value={{ user, setUser, products, setProducts}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Guard component={<App />} />}>
-            <Route index element={<HomePage />} />
             <Route path="product-page" element={<ProductPage />} />
           </Route>
+          <Route path='/home-page' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
         </Routes>

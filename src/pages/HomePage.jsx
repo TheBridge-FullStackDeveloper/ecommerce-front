@@ -1,8 +1,14 @@
 import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
-import products from '../product-data'
+import { useGetter } from '../store'
 import ImgMediaCard from "../components/productCard/ProductCard"
+
 export default function HomePage() {
+
+  const {products} = useGetter();
+
+  console.log(products)
+
   function menorPrice () {
     const priceSort = products.sort((a,b)=>{
       return a.price - b.price
@@ -16,6 +22,7 @@ export default function HomePage() {
         )
   }))
   }
+
   return (
     <Box>
       {/* Titular */}

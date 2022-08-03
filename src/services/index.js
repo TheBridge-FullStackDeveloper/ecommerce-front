@@ -1,6 +1,7 @@
 import axios from "axios";
 import auth from "./auth"
 import user from "./user";
+import product from "./product";
 
 const instance = axios.create({
     baseURL: "http://localhost:3000",
@@ -9,7 +10,8 @@ const instance = axios.create({
 
 const services = {
     auth: auth(instance),
-    user: user(instance)
+    user: user(instance),
+    product: product(instance)
 }
 
 export default services;

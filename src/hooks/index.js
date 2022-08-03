@@ -38,3 +38,15 @@ export const useLogin =({onSuccess}) => {
 
     return login;
 }
+
+export const useProduct = () => {
+  const [products, setProducts] = useState([]);
+
+  const getAll = async () => {
+    const result = await services.product.getAll();
+    result && setProducts(result);
+    
+  };
+
+  return [products, getAll];
+};
