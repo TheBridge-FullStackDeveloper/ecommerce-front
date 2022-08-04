@@ -53,8 +53,8 @@ export const useProduct = () => {
 
 export const useCreateOrder = () => {
 
-  const addToCart = async () => {
-    await services.order.addToCart();
+  const addToCart = async (data) => {
+    await services.order.createOrder(data);
   };
 
   return addToCart;

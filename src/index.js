@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './pages/HomePage';
-import { useUser, useProduct } from 'hooks';
+import { useUser, useProduct, useCreateOrder } from 'hooks';
 import ProductPage from "./pages/ProductPage";
 import App from "./App";
 import Context, { useGetter } from "store";
 import Login from "./pages/authPage/Login";
 import Register from "./pages/authPage/Register";
+
 
 const Guard = ({ component: Component }) => {
   const { user } = useGetter();
@@ -19,9 +20,10 @@ const Container = () => {
   const [products, setProducts] = useProduct();
   const [isCartOpen, setCartOpen] = useState(false);
   const [cart, setCart] = useState([]);
+  const createOrder = useCreateOrder();
   return (
     <Context.Provider
-      value={{ user, setUser, isCartOpen, setCartOpen, cart, setCart, products, setProducts }}
+      value={{ user, setUser, isCartOpen, setCartOpen, cart, setCart, products, setProducts, createOrder }}
     >
       <BrowserRouter>
         <Routes>

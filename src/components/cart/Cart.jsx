@@ -2,7 +2,7 @@ import { useGetter } from "store";
 import "./cart.scss";
 
 export default function Cart() {
-  const { isCartOpen, setCartOpen, cart } = useGetter();
+  const { isCartOpen, setCartOpen, cart, createOrder } = useGetter();
 
   const quantities = cart.reduce(function (prev, cur) {
     prev[cur.name] = (prev[cur.name] || 0) + 1;
@@ -41,7 +41,7 @@ export default function Cart() {
           </div>
         ))}
       </div>
-      <button className="button">Go to Payment</button>
+      <button className="button" onClick={() => createOrder(getUniqueListBy(cart, "name"))}>Make Order</button>
     </div>
   );
 }
