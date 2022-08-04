@@ -35,6 +35,7 @@ export default function ImgMediaCard({
         alt={name}
         height="192"
         image={img}
+
         sx={{ maxWidth: "100%", maxHeight: "100%" }}
       />
       <CardContent

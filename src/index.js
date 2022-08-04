@@ -9,7 +9,6 @@ import Context, { useGetter } from "store";
 import Login from "./pages/authPage/Login";
 import Register from "./pages/authPage/Register";
 
-
 const Guard = ({ component: Component }) => {
   const { user } = useGetter();
   return user ? Component : <Navigate to="/login" replace />;
@@ -21,6 +20,8 @@ const Container = () => {
   const [isCartOpen, setCartOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const createOrder = useCreateOrder();
+
+
   return (
     <Context.Provider
       value={{ user, setUser, isCartOpen, setCartOpen, cart, setCart, products, setProducts, createOrder }}
