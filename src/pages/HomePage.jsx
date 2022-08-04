@@ -14,10 +14,10 @@ export default function HomePage() {
       return a.price - b.price
     })
     return (
-      priceSort.slice(0,3).map(products => {
+      priceSort.slice(0,3).map(product => {
         return(
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-        <ImgMediaCard  key={products.id} product={products} />
+          <Grid key={product.ref} item xs={12} sm={6} md={4} lg={3}>
+        <ImgMediaCard product={product} />
       </Grid>
         )
   }))
@@ -40,9 +40,9 @@ export default function HomePage() {
             </Typography>
             <Grid container spacing={2} padding={3} sx={{display:'flex', alignItems:'center', justifyContent:'center'}} >
               {
-                products.map(products => products.rating > 4 ? (
-                  <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <ImgMediaCard key={products.id} product={products} />
+                products.map(product => product.rate > 4 ? (
+                  <Grid item key={product.ref} xs={12} sm={6} md={4} lg={3}>
+                    <ImgMediaCard product={product} />
                   </Grid>
                 ) : null)
               }

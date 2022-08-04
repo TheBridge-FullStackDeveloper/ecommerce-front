@@ -44,7 +44,7 @@ export const useProduct = () => {
 
   const getAll = async () => {
     const result = await services.product.getAll();
-    result && setProducts(result);
+    result && setProducts(result.data);
     
   };
 

@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import accounting from 'accounting';
 import { Box } from '@mui/material';
-import { display } from '@mui/system';
 function truncateString(str, num = 200) {
   if (str.length > num) {
     return str.slice(0, num) + " ... ";
@@ -15,7 +14,7 @@ function truncateString(str, num = 200) {
     return str;
   }
 }
-export default function ImgMediaCard({ product: { id, name, rating, stock, image, category, price, details } }) {
+export default function ImgMediaCard({ product: { ref, name, rate, stock, img, category, price, details } }) {
   const [isHover, setHover] = React.useState(false);
   const elevation = isHover ? 24 : 0
   return (
@@ -27,7 +26,7 @@ export default function ImgMediaCard({ product: { id, name, rating, stock, image
         component="img"
         alt={name}
         height="192"
-        image={image}
+        image={img}
         sx={{ maxWidth: '100%', maxHeight: '100%' }}
       />
       <CardContent sx={{
@@ -47,10 +46,10 @@ export default function ImgMediaCard({ product: { id, name, rating, stock, image
       <CardActions sx={{ display: "flex", justifyContent: "space-between", mr: 2 }}>
         <Button size="large" variant="contained" color="secondary" sx={{ fontWeight: "bold", backgroundColor: "#7749F8", mb: 0, '&:hover': { backgroundColor: "#FFFFFF", color: "#7749F8", fontWeight: 'bold' } }}>Add to Cart</Button>
         <Box sx={{ display: "flex" }}>
-          {Array(rating)
+          {Array(rate)
             .fill()
             .map((_, i) => (
-              <p>&#11088;</p>
+              <p key={i}>&#11088;</p>
             ))}
         </Box>
       </CardActions>

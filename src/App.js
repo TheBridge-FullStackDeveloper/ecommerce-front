@@ -9,7 +9,8 @@ import { useEffect } from "react";
 
 function App() {
 
-  const { setProducts } = useGetter();
+  const { setProducts, products } = useGetter();
+  console.log(products)
 
   useEffect(() => {
     setProducts();

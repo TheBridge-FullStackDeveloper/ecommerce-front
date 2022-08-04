@@ -22,10 +22,10 @@ const Container = () => {
     <Context.Provider value={{ user, setUser, products, setProducts}}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Guard component={<App />} />}>
+          <Route path="/" element={<App />} >
             <Route path="product-page" element={<ProductPage />} />
+            <Route path='home-page' element={<HomePage />} />
           </Route>
-          <Route path='/home-page' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
         </Routes>
