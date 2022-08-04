@@ -4,39 +4,39 @@ import services from "services";
 
 
 export const useUser = () => {
-    const [user, setUser] = useState(null);
-  
-    const getUser = async () => {
-      const result = await services.user.getInfo();
-      result.success && setUser(result.data);
-    };
-  
-    return [user, getUser];
-  };
-  
+  const [user, setUser] = useState(null);
 
-  export const useRegister = ({ onSuccess }) => {
-    const register = async (data) => {
-      const result = await services.auth.register(data);
-      result.success && onSuccess();
-    };
-  
-    return register;
+  const getUser = async () => {
+    const result = await services.user.getInfo();
+    result.success && setUser(result.data);
   };
 
-export const useLogin =({onSuccess}) => {
-    const { user, setUser} = useGetter();
+  return [user, getUser];
+};
 
-    const login = async (data) => {
-        const result = await services.auth.login(data);
-        result.success && setUser()
-    }
 
-    useEffect(() =>{
-        user && onSuccess();
-    }, [user]);
+export const useRegister = ({ onSuccess }) => {
+  const register = async (data) => {
+    const result = await services.auth.register(data);
+    result.success && onSuccess();
+  };
 
-    return login;
+  return register;
+};
+
+export const useLogin = ({ onSuccess }) => {
+  const { user, setUser } = useGetter();
+
+  const login = async (data) => {
+    const result = await services.auth.login(data);
+    result.success && setUser()
+  }
+
+  useEffect(() => {
+    user && onSuccess();
+  }, [user]);
+
+  return login;
 }
 
 export const useProduct = () => {
@@ -45,8 +45,17 @@ export const useProduct = () => {
   const getAll = async () => {
     const result = await services.product.getAll();
     result && setProducts(result.data);
-    
+
   };
 
   return [products, getAll];
+};
+
+export const useCreateOrder = () => {
+
+  const addToCart = async () => {
+    await services.order.addToCart();
+  };
+
+  return addToCart;
 };
