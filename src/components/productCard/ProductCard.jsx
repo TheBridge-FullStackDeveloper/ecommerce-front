@@ -17,7 +17,7 @@ function truncateString(str, num = 200) {
   }
 }
 export default function ImgMediaCard({
-  product: { id, name, rating, stock, image, category, price, details },
+  product: { ref, name, rate, stock, img, category, price, details },
 }) {
   const { setCartOpen } = useGetter();
   const [isHover, setHover] = React.useState(false);
@@ -34,7 +34,8 @@ export default function ImgMediaCard({
         component="img"
         alt={name}
         height="192"
-        image={image}
+        image={img}
+
         sx={{ maxWidth: "100%", maxHeight: "100%" }}
       />
       <CardContent
@@ -66,7 +67,7 @@ export default function ImgMediaCard({
             setCartOpen(true);
             setCart([
               ...cart,
-              { id, name, rating, stock, image, category, price, details },
+              { ref, name, rate, stock, img, category, price, details },
             ]);
           }}
           size="large"
@@ -86,10 +87,10 @@ export default function ImgMediaCard({
           Add to Cart
         </Button>
         <Box sx={{ display: "flex" }}>
-          {Array(rating)
+          {Array(rate)
             .fill()
             .map((_, i) => (
-              <p>&#11088;</p>
+              <p key={i}>&#11088;</p>
             ))}
         </Box>
       </CardActions>

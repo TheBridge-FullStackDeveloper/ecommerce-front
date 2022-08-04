@@ -1,14 +1,14 @@
-import { Box, Grid, Typography } from '@mui/material'
-import { useState, useEffect } from 'react'
-import products from '../product-data'
+import { Box, Grid } from '@mui/material'
+import { useState } from 'react'
 import ImgMediaCard from "../components/productCard/ProductCard"
 import TextField from '@mui/material/TextField';
-import Select from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
+import { useGetter } from 'store';
 
 
 export default function ProductPage() {
   const [filterProduct, setFilterProduct] = useState('');
+  const {products} = useGetter();
 
   const [category, setCategory] = useState('');
 
@@ -33,7 +33,7 @@ export default function ProductPage() {
           onChange={handleProductChange}
         />
         <TextField sx={{ width: '150px', maxHeight: '50px', ml: 8 }}
-          labelId="filter"
+          labelid="filter"
           id="filter"
           label="Filter"
           select
@@ -56,8 +56,8 @@ export default function ProductPage() {
                 .filter((product) => product.name.toLowerCase().includes(filterProduct.toLowerCase()) )
                 .filter((product) => product.category.includes(category))
                 .map(products => (
-                  <Grid item xs={12} sm={6} md={4} lg={4} sx={{justifyContent:'center'}}>
-                    <ImgMediaCard key={products.id} product={products} />
+                  <Grid item key={products.ref} xs={12} sm={6} md={4} lg={4} sx={{justifyContent:'center'}}>
+                    <ImgMediaCard product={products} />
                   </Grid>
                 ))
             }
