@@ -1,6 +1,9 @@
-import "./navbar.scss"
-import { Link }from "react-router-dom"
+import "./navbar.scss";
+import { Link } from "react-router-dom";
+import { useGetter } from "store"
+
 const Navbar = () => {
+  const { setCartOpen } = useGetter();
   return (
     <nav>
       <div className="logo">
@@ -9,10 +12,11 @@ const Navbar = () => {
       <div className="menu">
         <Link to="/">Home</Link>
         <Link to="/product-page"> Product </Link>
-        <p>Cart</p>
+        <p onClick={() => setCartOpen(true)}>Cart</p>
         <p>Login</p>
       </div>
     </nav>
-  )
-}
-export default Navbar
+  );
+};
+
+export default Navbar;
